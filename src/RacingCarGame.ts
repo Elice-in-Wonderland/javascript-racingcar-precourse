@@ -25,6 +25,11 @@ class RacingCarGame {
       'submit',
       this.handleCarNamesSubmit,
     );
+
+    ($(SELECTOR.RACING_COUNT_FORM) as HTMLFormElement).addEventListener(
+      'submit',
+      this.handleRacingCountSubmit,
+    );
   }
 
   handleCarNamesSubmit(e: SubmitEvent) {
@@ -34,6 +39,14 @@ class RacingCarGame {
     );
 
     const result = isCarNamesValid(carNames);
+  }
+
+  handleRacingCountSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    debugger;
+    const { racingCount } = formDataToObject(
+      new FormData(e.target as HTMLFormElement),
+    );
   }
 }
 
