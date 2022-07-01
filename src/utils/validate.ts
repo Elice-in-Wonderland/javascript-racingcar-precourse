@@ -41,4 +41,26 @@ function isCarNamesValid(carNames: string) {
   return true;
 }
 
-export { isCarNamesValid };
+function isValidNaturalNumber(count: string) {
+  return Number(count) > 0;
+}
+
+function isNonEmpty(count: string) {
+  return count.length;
+}
+
+function isRacingCountValid(count: string) {
+  if (!isNonEmpty(count)) {
+    alert(ERROR_MESSAGE.RACING_COUNT_EMPTY);
+    return false;
+  }
+
+  if (!isValidNaturalNumber(count)) {
+    alert(ERROR_MESSAGE.RACING_COUNT_NON_NATURAL);
+    return false;
+  }
+
+  return true;
+}
+
+export { isCarNamesValid, isRacingCountValid };

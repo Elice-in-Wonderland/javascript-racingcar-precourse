@@ -1,7 +1,12 @@
 import Car from './Car';
 import { SELECTOR } from './constants';
 import ResultView from './ResultView';
-import { $, formDataToObject, isCarNamesValid } from './utils';
+import {
+  $,
+  formDataToObject,
+  isCarNamesValid,
+  isRacingCountValid,
+} from './utils';
 
 class RacingCarGame {
   cars: Car[];
@@ -43,10 +48,13 @@ class RacingCarGame {
 
   handleRacingCountSubmit(e: SubmitEvent) {
     e.preventDefault();
-    debugger;
+    // debugger;
+
     const { racingCount } = formDataToObject(
       new FormData(e.target as HTMLFormElement),
     );
+
+    const result = isRacingCountValid(racingCount);
   }
 }
 

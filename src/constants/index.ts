@@ -14,6 +14,8 @@ const ERROR_MESSAGE = {
     '자동차 이름은 중복되지 않게 작성해주세요. ex) east, west',
   CAR_NAME_LENGTH: '자동차 이름은 5자 이하로 작성해주세요. ex) east, west',
   CAR_NAME_COMMA: '자동차 이름을 쉼표로 구분해주세요. ex) east, west',
+  RACING_COUNT_EMPTY: '시도할 횟수를 입력해주세요. ex) 3',
+  RACING_COUNT_NON_NATURAL: '자연수만 입력해주세요. ex) 3',
 };
 
 const CAR = {
