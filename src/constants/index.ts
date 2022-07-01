@@ -10,7 +10,10 @@ const SELECTOR = {
 };
 
 const ERROR_MESSAGE = {
-  NON_UNIQUE: '중복된 자동차 이름이 존재합니다.',
+  CAR_NAME_DUPLICATE:
+    '자동차 이름은 중복되지 않게 작성해주세요. ex) east, west',
+  CAR_NAME_LENGTH: '자동차 이름은 5자 이하로 작성해주세요. ex) east, west',
+  CAR_NAME_COMMA: '자동차 이름을 쉼표로 구분해주세요. ex) east, west',
 };
 
 const CAR = {

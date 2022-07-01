@@ -1,4 +1,4 @@
-import { CAR } from '../constants';
+import { CAR, ERROR_MESSAGE } from '../constants';
 
 function isValidCarNameByComma(cars: string[]) {
   // 최소한 두명이 있어야 경기가 진행되기 때문에
@@ -24,17 +24,17 @@ function isCarNamesValid(carNames: string) {
   // debugger;
 
   if (!isValidCarNameByComma(cars)) {
-    alert('자동차 이름을 쉼표로 구분해주세요.');
+    alert(ERROR_MESSAGE.CAR_NAME_COMMA);
     return false;
   }
 
   if (!isValidCarNameLength(cars)) {
-    alert('자동차 이름은 5자 이하로 작성해주세요.');
+    alert(ERROR_MESSAGE.CAR_NAME_LENGTH);
     return false;
   }
 
   if (!isValidUniqueCarName(cars)) {
-    alert('자동차 이름은 중복되지 않게 작성해주세요.');
+    alert(ERROR_MESSAGE.CAR_NAME_DUPLICATE);
     return false;
   }
 
