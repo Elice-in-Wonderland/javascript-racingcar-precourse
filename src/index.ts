@@ -18,8 +18,8 @@ createCarBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const input = document.querySelector("#car-names-input") as HTMLInputElement;
   const names = input.value.split(",");
-  if (isValidName(names))
-    racingGame.createCars(names.map((name) => new Car({ name })));
+  if (isValidName({ names }))
+    racingGame.createCars({ cars: names.map((name) => new Car({ name })) });
   else alert("5글자 이하 이름만 가능합니다.");
 });
 
@@ -28,11 +28,11 @@ startGameBtn.addEventListener("click", (event) => {
   const input = document.querySelector(
     "#racing-count-input"
   ) as HTMLInputElement;
-  const count = Number(input.value);
-  if (count === 0) {
+  const times = Number(input.value);
+  if (times === 0) {
     alert("0 이외의 숫자만 입력해주세요.");
   } else {
-    racingGame.startGame(count, racingResult);
-    racingGame.paintWinner(racingWinner);
+    racingGame.startGame({ times, dom: racingResult });
+    racingGame.paintWinner({ dom: racingWinner });
   }
 });

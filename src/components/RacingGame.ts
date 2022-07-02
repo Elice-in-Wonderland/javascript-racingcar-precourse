@@ -1,34 +1,43 @@
 import Car from "./Car";
+import {
+  ICreateCars,
+  IStartGame,
+  IPaintResult,
+  IPaintBlank,
+  IPaintWinner,
+} from "../@types/RacingGame";
+import { racingResultHTML } from "../utils/index";
 
 export default class RacingGame {
   cars: Car[] = [];
 
-  createCars(cars: Car[]) {
+  createCars({ cars }: ICreateCars) {
     this.cars = cars;
   }
 
-  startGame(times: number, dom: HTMLElement) {
+  startGame({ times, dom }: IStartGame) {
     for (let i = 0; i < times; i++) {
-      this.cars.map((car) => {
-        car.isGoingForward() && car.move();
-        this.paintResult(dom, car);
-      });
-      this.paintBlank(dom);
+      this.moveCars();
+      this.paintResult({ dom });
+      this.paintBlank({ dom });
     }
   }
+  moveCars() {
+    this.cars.map((car) => car.isGoingForward() && car.move());
+  }
 
-  paintResult(dom: HTMLElement, car: Car) {
+  paintResult({ dom }: IPaintResult) {
     const div = document.createElement("div");
-    div.innerHTML = `${car.name + ": " + car.movingStatus}`;
+    div.innerHTML = racingResultHTML({ cars: this.cars });
     dom.appendChild(div);
   }
 
-  paintBlank(dom: HTMLElement) {
+  paintBlank({ dom }: IPaintBlank) {
     const br = document.createElement("br");
     dom.appendChild(br);
   }
 
-  paintWinner(dom: HTMLElement) {
+  paintWinner({ dom }: IPaintWinner) {
     dom.innerHTML = this.findWinner();
   }
 
