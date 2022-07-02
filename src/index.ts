@@ -1,5 +1,6 @@
 import Car from "./components/Car";
 import RacingGame from "./components/RacingGame";
+import { isValidName } from "./utils/index";
 
 const racingGame = new RacingGame();
 const createCarBtn = document.querySelector(
@@ -16,8 +17,10 @@ const racingWinner = document.querySelector(
 createCarBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const input = document.querySelector("#car-names-input") as HTMLInputElement;
-  const value = input.value.split(",");
-  racingGame.createCars(value.map((name) => new Car({ name })));
+  const names = input.value.split(",");
+  if (isValidName(names))
+    racingGame.createCars(names.map((name) => new Car({ name })));
+  else alert("5글자 이하 이름만 가능합니다.");
 });
 
 startGameBtn.addEventListener("click", (event) => {
@@ -25,6 +28,11 @@ startGameBtn.addEventListener("click", (event) => {
   const input = document.querySelector(
     "#racing-count-input"
   ) as HTMLInputElement;
-  racingGame.startGame(Number(input.value), racingResult);
-  racingGame.paintWinner(racingWinner);
+  const count = Number(input.value);
+  if (count === 0) {
+    alert("0 이외의 숫자만 입력해주세요.");
+  } else {
+    racingGame.startGame(count, racingResult);
+    racingGame.paintWinner(racingWinner);
+  }
 });
