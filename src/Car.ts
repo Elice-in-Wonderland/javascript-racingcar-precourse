@@ -8,10 +8,17 @@ class Car {
     this.position = 0;
   }
 
-  // 차의 위치 get
-  // 차 움직이는 함수
+  move() {
+    this.position += 1;
+  }
 
-  // 차의 이름 get, set
+  getName() {
+    return this.name;
+  }
+
+  getPosition() {
+    return this.position;
+  }
 }
 
 export default Car;

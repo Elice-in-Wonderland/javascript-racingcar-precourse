@@ -3,9 +3,12 @@ const SELECTOR = {
   CAR_NAMES_FORM: '#car-names-form',
   CAR_NAMES_INPUT: '#car-names-input',
   CAR_NAMES_SUBMIT: '#car-names-submit',
+  RACING_COUNT_HEADING: '#racing-count-heading',
   RACING_COUNT_FORM: '#racing-count-form',
   RACING_COUNT_INPUT: '#racing-count-input',
   RACING_COUNT_SUBMIT: '#racing-count-submit',
+  RACING_RESULT_HEADING: '#racing-result-heading',
+  RACING_RESULT_CONTENT: '#racing-result-content',
   RACING_WINNERS: '#racing-winners',
 };
 

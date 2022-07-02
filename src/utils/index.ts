@@ -1,5 +1,12 @@
-import { formDataToObject } from './common';
-import { $ } from './dom';
+import { formDataToObject, getRandomNumber } from './common';
+import { $, changeElementVisibility } from './dom';
 import { isCarNamesValid, isRacingCountValid } from './validate';
 
-export { $, formDataToObject, isCarNamesValid, isRacingCountValid };
+export {
+  $,
+  formDataToObject,
+  getRandomNumber,
+  isCarNamesValid,
+  isRacingCountValid,
+  changeElementVisibility,
+};

@@ -1,61 +1,38 @@
 import Car from './Car';
-import { SELECTOR } from './constants';
-import ResultView from './ResultView';
-import {
-  $,
-  formDataToObject,
-  isCarNamesValid,
-  isRacingCountValid,
-} from './utils';
+import { getRandomNumber } from './utils';
 
 class RacingCarGame {
   cars: Car[];
 
-  resultView: ResultView;
-
-  constructor(resultView: ResultView) {
-    this.resultView = resultView;
+  constructor() {
     this.cars = [];
-    this.initialize();
-    this.addEventHandler();
   }
 
-  initialize() {
-    ($(SELECTOR.CAR_NAMES_INPUT) as HTMLInputElement).value = '';
-    ($(SELECTOR.RACING_COUNT_INPUT) as HTMLInputElement).value = '';
+  makeEachOfCar(carNameList: string[]) {
+    this.cars = carNameList.map((carName) => new Car(carName));
   }
 
-  addEventHandler() {
-    ($(SELECTOR.CAR_NAMES_FORM) as HTMLFormElement).addEventListener(
-      'submit',
-      this.handleCarNamesSubmit,
-    );
-
-    ($(SELECTOR.RACING_COUNT_FORM) as HTMLFormElement).addEventListener(
-      'submit',
-      this.handleRacingCountSubmit,
-    );
+  start(count: number, renderStep: (car: Car) => void) {
+    for (let i = 0; i < count; i += 1) {
+      this.moveStep(this.cars, renderStep);
+    }
   }
 
-  handleCarNamesSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    const { carNames } = formDataToObject(
-      new FormData(e.target as HTMLFormElement),
-    );
-
-    const result = isCarNamesValid(carNames);
+  moveStep(cars: Car[], renderStep: (car: Car) => void) {
+    for (let i = 0; i < cars.length; i += 1) {
+      const currentCar = cars[i];
+      this.calculateMove(currentCar);
+      renderStep(currentCar);
+    }
   }
 
-  handleRacingCountSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    // debugger;
-
-    const { racingCount } = formDataToObject(
-      new FormData(e.target as HTMLFormElement),
-    );
-
-    const result = isRacingCountValid(racingCount);
+  // TODO: 매직넘버 처리
+  calculateMove(car: Car) {
+    // 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
+    if (getRandomNumber(0, 9) >= 4) car.move();
   }
+
+  finish(renderWinner: (winners: string) => void) {}
 }
 
 export default RacingCarGame;
