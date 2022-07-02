@@ -9,4 +9,8 @@ function formDataToObject(formData: FormData) {
   );
 }
 
-export { formDataToObject };
+function getRandomNumber(startInclusive: number, endInclusive: number) {
+  return MissionUtils.Random.pickNumberInRange(startInclusive, endInclusive);
+}
+
+export { formDataToObject, getRandomNumber };
