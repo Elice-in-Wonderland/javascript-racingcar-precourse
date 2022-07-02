@@ -1,5 +1,6 @@
 import Car from './Car';
 import { SELECTOR } from './constants';
+import { RenderStepProps } from './RacingCarGame';
 import { $, changeElementVisibility, createElement } from './utils/dom';
 
 class ResultView {
@@ -25,17 +26,19 @@ class ResultView {
     changeElementVisibility($(SELECTOR.RACING_RESULT_CONTENT), 'visible');
   }
 
-  renderStep(car: Car) {
+  renderStep({ car, options }: RenderStepProps) {
     this.view.insertAdjacentHTML(
       'beforeend',
       `<span>${car.getName()}: ${'-'.repeat(car.getPosition())}</span><br />`,
     );
+
+    if (options?.last) this.view.insertAdjacentHTML('beforeend', `<br />`);
   }
 
   renderWinner(winners: string) {
     this.view.insertAdjacentHTML(
       'beforeend',
-      `<h4>최종 우승자: <span id="racing-winners">${winners}</span></h4>`,
+      `<span>최종 우승자: <strong id="racing-winners">${winners}</strong></span>`,
     );
   }
 }

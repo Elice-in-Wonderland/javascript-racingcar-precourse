@@ -2,6 +2,15 @@ import Car from './Car';
 import { CAR } from './constants';
 import { getRandomNumber } from './utils';
 
+export interface RenderStepProps {
+  car: Car;
+  options?: {
+    last: boolean;
+  };
+}
+
+type RenderStep = ({ car, options }: RenderStepProps) => void;
+
 class RacingCarGame {
   cars: Car[];
 
@@ -13,17 +22,22 @@ class RacingCarGame {
     this.cars = carNameList.map((carName) => new Car(carName));
   }
 
-  start(count: number, renderStep: (car: Car) => void) {
+  start(count: number, renderStep: RenderStep) {
     for (let i = 0; i < count; i += 1) {
       this.moveStep(this.cars, renderStep);
     }
   }
 
-  moveStep(cars: Car[], renderStep: (car: Car) => void) {
+  moveStep(cars: Car[], renderStep: RenderStep) {
+    const lastCar = cars[cars.length - 1];
+
     for (let i = 0; i < cars.length; i += 1) {
       const currentCar = cars[i];
       this.calculateMove(currentCar);
-      renderStep(currentCar);
+      renderStep({
+        car: currentCar,
+        options: { last: lastCar === currentCar },
+      });
     }
   }
 
@@ -38,7 +52,13 @@ class RacingCarGame {
     }
   }
 
-  finish(renderWinner: (winners: string) => void) {}
+  calculateWinners() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.getPosition()));
+
+    return this.cars
+      .filter((car) => car.getPosition() === maxPosition)
+      .map((car) => car.getName());
+  }
 }
 
 export default RacingCarGame;

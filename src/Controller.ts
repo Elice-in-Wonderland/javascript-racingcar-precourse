@@ -41,10 +41,10 @@ class Controller {
     );
   }
 
-  handleCarNamesSubmit(e: SubmitEvent) {
-    e.preventDefault();
+  handleCarNamesSubmit(event: SubmitEvent) {
+    event.preventDefault();
     const { carNames } = formDataToObject(
-      new FormData(e.target as HTMLFormElement),
+      new FormData(event.target as HTMLFormElement),
     );
     const carNameList = carNames.split(',').map((car) => car.trim());
     if (!isCarNamesValid(carNameList)) return;
@@ -54,10 +54,10 @@ class Controller {
     changeElementVisibility($(SELECTOR.RACING_COUNT_FORM), 'visible');
   }
 
-  handleRacingCountSubmit(e: SubmitEvent) {
-    e.preventDefault();
+  handleRacingCountSubmit(event: SubmitEvent) {
+    event.preventDefault();
     const { racingCount } = formDataToObject(
-      new FormData(e.target as HTMLFormElement),
+      new FormData(event.target as HTMLFormElement),
     );
     if (!isRacingCountValid(racingCount)) return;
 
@@ -66,7 +66,7 @@ class Controller {
       Number(racingCount),
       this.resultView.renderStep.bind(this.resultView),
     );
-    // TODO: 우승자 결정 및 출력
+    this.resultView.renderWinner(this.game.calculateWinners().join(','));
   }
 }
 
