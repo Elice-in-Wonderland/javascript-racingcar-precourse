@@ -1,15 +1,15 @@
 import { CAR, ERROR_MESSAGE } from '../constants';
 
-function isValidCarNameByComma(cars: string[]) {
+function isValidCarNamesByComma(cars: string[]) {
   // 최소한 두명이 있어야 경기가 진행되기 때문에
   return cars.length > 1;
 }
 
-function isValidCarNameLength(cars: string[]) {
+function isValidCarNamesLength(cars: string[]) {
   return cars.every((car) => car.length <= CAR.NAME_LENGTH);
 }
 
-function isValidUniqueCarName(cars: string[]) {
+function isValidUniqueCarNames(cars: string[]) {
   const uniqueCarSet = new Set();
 
   for (let i = 0; i < cars.length; i += 1) {
@@ -19,21 +19,20 @@ function isValidUniqueCarName(cars: string[]) {
   return cars.length === uniqueCarSet.size;
 }
 
-function isCarNamesValid(carNames: string) {
-  const cars = carNames.split(',').map((car) => car.trim());
+function isCarNamesValid(cars: string[]) {
   // debugger;
 
-  if (!isValidCarNameByComma(cars)) {
+  if (!isValidCarNamesByComma(cars)) {
     alert(ERROR_MESSAGE.CAR_NAME_COMMA);
     return false;
   }
 
-  if (!isValidCarNameLength(cars)) {
+  if (!isValidCarNamesLength(cars)) {
     alert(ERROR_MESSAGE.CAR_NAME_LENGTH);
     return false;
   }
 
-  if (!isValidUniqueCarName(cars)) {
+  if (!isValidUniqueCarNames(cars)) {
     alert(ERROR_MESSAGE.CAR_NAME_DUPLICATE);
     return false;
   }
