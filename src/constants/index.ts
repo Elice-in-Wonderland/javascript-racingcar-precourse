@@ -23,6 +23,11 @@ const ERROR_MESSAGE = {
 
 const CAR = {
   NAME_LENGTH: 5,
+  RANGE_RANDOM_NUMBER: {
+    MIN: 0,
+    MAX: 9,
+  },
+  RANGE_MOVABLE: 4,
 };
 
 export { SELECTOR, ERROR_MESSAGE, CAR };

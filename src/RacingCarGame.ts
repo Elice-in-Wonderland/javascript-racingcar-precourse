@@ -1,4 +1,5 @@
 import Car from './Car';
+import { CAR } from './constants';
 import { getRandomNumber } from './utils';
 
 class RacingCarGame {
@@ -26,10 +27,15 @@ class RacingCarGame {
     }
   }
 
-  // TODO: 매직넘버 처리
   calculateMove(car: Car) {
-    // 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우
-    if (getRandomNumber(0, 9) >= 4) car.move();
+    if (
+      getRandomNumber(
+        CAR.RANGE_RANDOM_NUMBER.MIN,
+        CAR.RANGE_RANDOM_NUMBER.MAX,
+      ) >= CAR.RANGE_MOVABLE
+    ) {
+      car.move();
+    }
   }
 
   finish(renderWinner: (winners: string) => void) {}
