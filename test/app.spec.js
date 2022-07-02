@@ -1,5 +1,5 @@
 describe("구현 결과가 요구사항과 일치해야 한다.", () => {
-  const baseUrl = "../index.html";
+  const baseUrl = "../dist/index.html";
   const SELECTOR = {
     CAR_NAMES_INPUT: "#car-names-input",
     CAR_NAMES_SUBMIT_BUTTON: "#car-names-submit",
