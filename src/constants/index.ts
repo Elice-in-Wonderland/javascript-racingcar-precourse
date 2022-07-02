@@ -22,7 +22,10 @@ const ERROR_MESSAGE = {
 };
 
 const CAR = {
-  NAME_LENGTH: 5,
+  NAME_LENGTH: {
+    MIN: 1,
+    MAX: 5,
+  },
   RANGE_RANDOM_NUMBER: {
     MIN: 0,
     MAX: 9,

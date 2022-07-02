@@ -6,7 +6,10 @@ function isValidCarNamesByComma(cars: string[]) {
 }
 
 function isValidCarNamesLength(cars: string[]) {
-  return cars.every((car) => car.length <= CAR.NAME_LENGTH);
+  return cars.every(
+    (car) =>
+      car.length >= CAR.NAME_LENGTH.MIN && car.length <= CAR.NAME_LENGTH.MAX,
+  );
 }
 
 function isValidUniqueCarNames(cars: string[]) {
