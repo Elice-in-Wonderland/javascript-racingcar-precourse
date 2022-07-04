@@ -10,6 +10,10 @@ export default class Car {
     this.name = name;
   }
 
+  resetDistance() {
+    this.movingStatus = "";
+  }
+
   isGoingForward() {
     const randomValue = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomValue >= 4) return true;

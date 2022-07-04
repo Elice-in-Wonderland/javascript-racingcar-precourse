@@ -16,17 +16,24 @@ export default class RacingGame {
   }
 
   startGame({ times, dom }: IStartGame) {
+    this.resetCars();
     for (let i = 0; i < times; i++) {
       this.moveCars();
       this.paintResult({ dom });
       this.paintBlank({ dom });
     }
   }
+
+  resetCars() {
+    this.cars.map((car) => car.resetDistance());
+  }
+
   moveCars() {
     this.cars.map((car) => car.isGoingForward() && car.move());
   }
 
   paintResult({ dom }: IPaintResult) {
+    dom.innerHTML = "📄 실행 결과";
     const div = document.createElement("div");
     div.innerHTML = racingResultHTML({ cars: this.cars });
     dom.appendChild(div);
