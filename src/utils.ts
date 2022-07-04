@@ -12,3 +12,12 @@ export const btnAddEventListener = (btnId: string, callBack: () => void) => {
     callBack();
   });
 };
+export const inputInitialization = (inputId: string) => {
+  const input = document.getElementById(inputId) as HTMLInputElement;
+  input.value = "";
+};
+
+export const inputWrong = (alertMassage: string, inputId: string) => {
+  alert(alertMassage);
+  inputInitialization(inputId);
+};
