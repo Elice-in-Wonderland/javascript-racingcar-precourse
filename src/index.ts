@@ -29,4 +29,11 @@ const startGame = () => {
   getAttemptNumber(variables);
 };
 
+const playGame = (variables: IVariables) => {
+  const carList = variables.getCarList();
+  const attemptNumber = variables.getAttemptNumber();
+  const cars = makeCar(carList);
+  MoveCar(cars, attemptNumber);
+};
+
 startGame();

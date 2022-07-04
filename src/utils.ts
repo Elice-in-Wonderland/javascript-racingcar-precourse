@@ -27,6 +27,11 @@ export const inputWrong = (alertMassage: string, inputId: string) => {
   alert(alertMassage);
   inputInitialization(inputId);
 };
+export const randomNumber = () => {
+  const random = MissionUtils.Random.pickNumberInRange(0, 9);
+  return random;
+};
+
 export const forwardMovement = (randomNumber: number) => {
   if (randomNumber >= FORWARD_MOVEMENT_THRESHOLD) {
     return true;
@@ -34,3 +39,21 @@ export const forwardMovement = (randomNumber: number) => {
   return false;
 };
 
+export const MoveCar = (cars: Array<ICar>, attemptNumber: number) => {
+  const result = document.getElementById("racing-result");
+  const parent = document.getElementById("app");
+  let resultDiv = document.createElement("div");
+  resultDiv.setAttribute("id", "racing-score");
+  for (let i = 0; i < attemptNumber; i += 1) {
+    cars.forEach((car: any, idx: number) => {
+      resultDiv.innerHTML += printResult(car.getName(), car.moveNumber());
+      if (idx === cars.length - 1) {
+        resultDiv.innerHTML += `<br/>`;
+      }
+    });
+  }
+  parent.insertBefore(resultDiv, result);
+};
+export const makeCar = (carList: Array<string>) => {
+  return carList.map((car) => new Car(car));
+};
