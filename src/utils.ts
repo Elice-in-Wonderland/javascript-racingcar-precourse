@@ -21,3 +21,10 @@ export const inputWrong = (alertMassage: string, inputId: string) => {
   alert(alertMassage);
   inputInitialization(inputId);
 };
+export const forwardMovement = (randomNumber: number) => {
+  if (randomNumber >= FORWARD_MOVEMENT_THRESHOLD) {
+    return true;
+  }
+  return false;
+};
+
