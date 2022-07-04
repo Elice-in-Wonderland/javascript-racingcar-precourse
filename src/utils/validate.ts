@@ -1,41 +1,36 @@
 import { CAR, ERROR_MESSAGE } from '../constants';
 
-function isValidCarNamesByComma(cars: string[]) {
+function isValidCarNamesByComma(carNames: string[]) {
   // 최소한 두명이 있어야 경기가 진행되기 때문에
-  return cars.length > 1;
+  return carNames.length > 1;
 }
 
-function isValidCarNamesLength(cars: string[]) {
-  return cars.every(
-    (car) =>
-      car.length >= CAR.NAME_LENGTH.MIN && car.length <= CAR.NAME_LENGTH.MAX,
+function isValidCarNamesLength(carNames: string[]) {
+  return carNames.every(
+    (carName) =>
+      carName.length >= CAR.NAME_LENGTH.MIN &&
+      carName.length <= CAR.NAME_LENGTH.MAX,
   );
 }
 
-function isValidUniqueCarNames(cars: string[]) {
-  const uniqueCarSet = new Set();
-
-  for (let i = 0; i < cars.length; i += 1) {
-    uniqueCarSet.add(cars[i]);
-  }
-
-  return cars.length === uniqueCarSet.size;
+function isValidUniqueCarNames(carNames: string[]) {
+  return carNames.length === new Set(carNames).size;
 }
 
-function isCarNamesValid(cars: string[]) {
+function isCarNamesValid(carNames: string[]) {
   // debugger;
 
-  if (!isValidCarNamesByComma(cars)) {
+  if (!isValidCarNamesByComma(carNames)) {
     alert(ERROR_MESSAGE.CAR_NAME_COMMA);
     return false;
   }
 
-  if (!isValidCarNamesLength(cars)) {
+  if (!isValidCarNamesLength(carNames)) {
     alert(ERROR_MESSAGE.CAR_NAME_LENGTH);
     return false;
   }
 
-  if (!isValidUniqueCarNames(cars)) {
+  if (!isValidUniqueCarNames(carNames)) {
     alert(ERROR_MESSAGE.CAR_NAME_DUPLICATE);
     return false;
   }
