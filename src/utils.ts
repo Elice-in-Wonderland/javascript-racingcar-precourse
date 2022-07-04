@@ -27,6 +27,12 @@ export const inputWrong = (alertMassage: string, inputId: string) => {
   alert(alertMassage);
   inputInitialization(inputId);
 };
+
+export const printResult = (carName: string, moveNumber: number) => {
+  let bar = "-".repeat(moveNumber);
+  return `<div>${carName}: ${bar}</div>`;
+};
+
 export const randomNumber = () => {
   const random = MissionUtils.Random.pickNumberInRange(0, 9);
   return random;
