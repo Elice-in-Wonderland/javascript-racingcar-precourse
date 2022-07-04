@@ -41,6 +41,7 @@ const playGame = (variables: IVariables) => {
   const attemptNumber = variables.getAttemptNumber();
   const cars = makeCar(carList);
   MoveCar(cars, attemptNumber);
+  printWinner(findWinner(cars));
 };
 
 startGame();

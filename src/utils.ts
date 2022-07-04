@@ -45,6 +45,29 @@ export const forwardMovement = (randomNumber: number) => {
   return false;
 };
 
+export const findMaxNum = (cars: Array<ICar>) => {
+  return Math.max.apply(
+    Math,
+    cars.map((car: any) => {
+      return car.getMoveNumber();
+    })
+  );
+};
+export const findWinner = (cars: Array<ICar>) => {
+  let winner: Array<string> = [];
+  const max = findMaxNum(cars);
+  cars.forEach((car: any) => {
+    if (car.getMoveNumber() === max) {
+      winner.push(car.getName());
+    }
+  });
+  return winner;
+};
+export const printWinner = (winners: Array<string>) => {
+  const winnerSpan = document.getElementById("racing-winners");
+  winnerSpan.innerHTML = winners.join(", ");
+};
+
 export const MoveCar = (cars: Array<ICar>, attemptNumber: number) => {
   const result = document.getElementById("racing-result");
   const parent = document.getElementById("app");
