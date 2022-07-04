@@ -57,3 +57,9 @@ export const MoveCar = (cars: Array<ICar>, attemptNumber: number) => {
 export const makeCar = (carList: Array<string>) => {
   return carList.map((car) => new Car(car));
 };
+export const clearResult = () => {
+  const racingScore = document.getElementById("racing-score");
+  if (racingScore) {
+    racingScore.remove();
+  }
+};

@@ -20,6 +20,7 @@ const getCarName = (variables: IVariables) => {
 const getAttemptNumber = (variables: IVariables) => {
   btnAddEventListener("racing-count-submit", () => {
     variables.setAttemptNumber(parseInt(getInputValue("racing-count-input")));
+    clearResult();
   });
 };
 
