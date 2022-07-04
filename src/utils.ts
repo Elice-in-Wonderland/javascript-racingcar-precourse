@@ -12,6 +12,12 @@ export const btnAddEventListener = (btnId: string, callBack: () => void) => {
     callBack();
   });
 };
+
+export const carNameOverMaxLength = (carList: Array<string>) => {
+  return carList.filter((car) => car.length > CAR_NAME_MAX_LENGTH).length === 0
+    ? false
+    : true;
+};
 export const inputInitialization = (inputId: string) => {
   const input = document.getElementById(inputId) as HTMLInputElement;
   input.value = "";
