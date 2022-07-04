@@ -1,4 +1,3 @@
-import Car from './Car';
 import { SELECTOR } from './constants';
 import { RenderStepProps } from './RacingCarGame';
 import { $, changeElementVisibility, createElement } from './utils/dom';
@@ -10,7 +9,7 @@ class ResultView {
     this.view = createElement('div', {
       id: SELECTOR.RACING_RESULT_CONTENT.slice(1),
     });
-    $(SELECTOR.ROOT)?.appendChild(this.view);
+    ($(SELECTOR.ROOT) as HTMLDivElement).appendChild(this.view);
 
     this.initialize();
   }
