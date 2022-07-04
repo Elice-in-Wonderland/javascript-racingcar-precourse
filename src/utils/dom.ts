@@ -24,4 +24,8 @@ function changeElementVisibility(
   selector.style.visibility = type;
 }
 
-export { $, createElement, changeElementVisibility };
+function selectorToString(selector: string) {
+  return selector.slice(1);
+}
+
+export { $, createElement, changeElementVisibility, selectorToString };

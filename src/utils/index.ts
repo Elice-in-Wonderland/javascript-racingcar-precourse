@@ -1,5 +1,5 @@
 import { formDataToObject, getRandomNumber } from './common';
-import { $, changeElementVisibility } from './dom';
+import { $, changeElementVisibility, selectorToString } from './dom';
 import { isCarNamesValid, isRacingCountValid } from './validate';
 
 export {
@@ -9,4 +9,5 @@ export {
   isCarNamesValid,
   isRacingCountValid,
   changeElementVisibility,
+  selectorToString,
 };

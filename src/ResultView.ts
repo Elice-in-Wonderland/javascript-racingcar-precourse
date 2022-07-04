@@ -1,13 +1,18 @@
 import { SELECTOR } from './constants';
 import { RenderStepProps } from './RacingCarGame';
-import { $, changeElementVisibility, createElement } from './utils/dom';
+import {
+  $,
+  changeElementVisibility,
+  createElement,
+  selectorToString,
+} from './utils/dom';
 
 class ResultView {
   view: HTMLDivElement;
 
   constructor() {
     this.view = createElement('div', {
-      id: SELECTOR.RACING_RESULT_CONTENT.slice(1),
+      id: selectorToString(SELECTOR.RACING_RESULT_CONTENT),
     });
     ($(SELECTOR.ROOT) as HTMLDivElement).appendChild(this.view);
 
